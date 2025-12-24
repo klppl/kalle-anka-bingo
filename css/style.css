@@ -1,0 +1,453 @@
+/* Base Reset & Variables */
+:root {
+	--primary-red: #d42426;
+	--dark-red: #a41214;
+	--green: #2f5a2c;
+	--gold: #f0c420;
+	--bg-dark: #1a1a1a;
+	--glass-bg: rgba(255, 255, 255, 0.92);
+	--glass-border: rgba(255, 255, 255, 0.4);
+	--shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+	--font-heading: 'Mountains of Christmas', cursive;
+	--font-body: 'Open Sans', sans-serif;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	-webkit-tap-highlight-color: transparent;
+}
+
+body {
+	background-color: var(--bg-dark);
+	/* Festive pattern background - using CSS gradients if image fails/missing */
+	background-image:
+		linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+		url('../img/christmas-dark.png');
+	background-attachment: fixed;
+	background-size: cover;
+	font-family: var(--font-body);
+	color: #333;
+	min-height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 20px;
+}
+
+/* Main Container */
+#container {
+	width: 100%;
+	max-width: 800px;
+	margin: 0 auto;
+}
+
+#header {
+	text-align: center;
+	margin-bottom: 30px;
+}
+
+h1 {
+	font-family: var(--font-heading);
+	font-size: 4em;
+	font-weight: 700;
+	color: var(--primary-red);
+	/* Keeping the red for title */
+	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+	margin: 0;
+	line-height: 1.1;
+}
+
+h1 small {
+	font-size: 0.4em;
+	color: #fff;
+	font-family: var(--font-body);
+	background: var(--primary-red);
+	padding: 2px 8px;
+	border-radius: 12px;
+	vertical-align: middle;
+	letter-spacing: 1px;
+}
+
+/* View Containers (Login, Dashboard, etc) */
+.view-login,
+.view-dashboard,
+.view-create,
+.view-game,
+.view-admin {
+	background: var(--glass-bg);
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px);
+	border: 1px solid var(--glass-border);
+	border-radius: 16px;
+	padding: 40px;
+	box-shadow: var(--shadow);
+	width: 100%;
+	text-align: center;
+	position: relative;
+	overflow: hidden;
+	animation: fadeIn 0.5s ease-out;
+}
+
+h2 {
+	font-family: var(--font-heading);
+	color: var(--dark-red);
+	font-size: 2.5em;
+	margin-bottom: 20px;
+}
+
+p {
+	font-size: 1.1em;
+	color: #555;
+	margin-bottom: 25px;
+	line-height: 1.6;
+}
+
+/* Forms & Inputs */
+input[type="text"],
+input[type="password"] {
+	width: 100%;
+	max-width: 400px;
+	padding: 15px 20px;
+	font-size: 1.1em;
+	border: 2px solid #ddd;
+	border-radius: 50px;
+	outline: none;
+	transition: all 0.3s ease;
+	background: rgba(255, 255, 255, 0.8);
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+	border-color: var(--primary-red);
+	box-shadow: 0 0 10px rgba(212, 36, 38, 0.2);
+}
+
+/* Buttons */
+button {
+	font-family: var(--font-body);
+	padding: 12px 30px;
+	border: none;
+	border-radius: 50px;
+	font-size: 1em;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	background: var(--primary-red);
+	color: white;
+	box-shadow: 0 4px 15px rgba(212, 36, 38, 0.3);
+	margin: 10px;
+}
+
+button:hover {
+	background: var(--dark-red);
+	transform: translateY(-2px);
+	box-shadow: 0 6px 20px rgba(212, 36, 38, 0.4);
+}
+
+button.secondary {
+	background: transparent;
+	border: 2px solid var(--primary-red);
+	color: var(--primary-red);
+	box-shadow: none;
+}
+
+button.secondary:hover {
+	background: var(--primary-red);
+	color: white;
+}
+
+button:disabled {
+	background: #ccc;
+	box-shadow: none;
+	cursor: not-allowed;
+	transform: none;
+}
+
+.big-btn {
+	display: block;
+	width: 100%;
+	max-width: 400px;
+	margin: 15px auto;
+	padding: 18px;
+	font-size: 1.2em;
+}
+
+/* Item List (Create Game) */
+.item-list {
+	text-align: left;
+	max-height: 50vh;
+	overflow-y: auto;
+	margin: 20px 0;
+	border-radius: 8px;
+	border: 1px solid #eee;
+	padding: 10px;
+	/* Custom Scrollbar */
+	scrollbar-width: thin;
+	scrollbar-color: var(--primary-red) #f0f0f0;
+}
+
+.item-list::-webkit-scrollbar {
+	width: 8px;
+}
+
+.item-list::-webkit-scrollbar-thumb {
+	background-color: var(--primary-red);
+	border-radius: 4px;
+}
+
+.item-checbkox {
+	padding: 12px 15px;
+	border-bottom: 1px solid #f0f0f0;
+	transition: background 0.2s;
+}
+
+.item-checbkox:hover {
+	background: #fff9f9;
+}
+
+.item-checbkox label {
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+input[type="checkbox"] {
+	width: 20px;
+	height: 20px;
+	accent-color: var(--primary-red);
+	cursor: pointer;
+}
+
+/* Bingo Grid */
+#board {
+	display: grid;
+	grid-template-columns: repeat(5, minmax(0, 1fr));
+	gap: 6px;
+	margin-bottom: 20px;
+	width: 100%;
+}
+
+.square {
+	background: #fff;
+	aspect-ratio: 1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 5px;
+	border-radius: 8px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	cursor: pointer;
+	transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+	border: 2px solid transparent;
+	user-select: none;
+}
+
+.square:hover {
+	transform: scale(1.05);
+	z-index: 2;
+	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.square .text {
+	font-size: 0.8em;
+	/* Dynamic Font Size handled by JS ideally, but CSS clamp works too */
+	font-size: clamp(0.5rem, 2.5vw, 0.9rem);
+	line-height: 1.1;
+	color: #333;
+	font-weight: 500;
+	word-break: break-word;
+	hyphens: auto;
+	overflow-wrap: anywhere;
+}
+
+.square.selected {
+	background: var(--primary-red);
+	border-color: var(--dark-red);
+	color: white;
+	transform: scale(0.95);
+	box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.square.selected .text {
+	color: white;
+}
+
+/* Footer */
+#footer {
+	text-align: center;
+	margin-top: 40px;
+	color: rgba(255, 255, 255, 0.7);
+}
+
+#logoutBtn {
+	background: rgba(0, 0, 0, 0.4);
+	font-size: 0.8em;
+	padding: 8px 20px;
+	margin-top: 20px;
+}
+
+#logoutBtn:hover {
+	background: var(--primary-red);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+	body {
+		padding: 10px;
+	}
+
+	h1 {
+		font-size: 2.5em;
+	}
+
+	.view-login,
+	.view-dashboard,
+	.view-create,
+	.view-game {
+		padding: 20px;
+	}
+
+	#board {
+		gap: 4px;
+	}
+
+	.square {
+		border-radius: 4px;
+	}
+
+	.square .text {
+		font-size: 8px;
+	}
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+		transform: translateY(20px);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+small {
+	font-size: 0.8em;
+	opacity: 0.8;
+}
+
+/* Admin Table */
+table {
+	width: 100%;
+	border-collapse: collapse;
+	margin-top: 20px;
+	background: white;
+	border-radius: 8px;
+	overflow: hidden;
+}
+
+th {
+	background: var(--primary-red);
+	color: white;
+	font-weight: 600;
+	text-transform: uppercase;
+	font-size: 0.85em;
+	padding: 15px;
+}
+
+td {
+	padding: 12px 15px;
+	border-bottom: 1px solid #eee;
+	color: #333;
+}
+
+tr:last-child td {
+	border-bottom: none;
+}
+
+.delete-btn {
+	padding: 6px 12px;
+	font-size: 0.8em;
+	background: #333;
+}
+
+.error {
+	color: var(--primary-red);
+	font-weight: bold;
+	margin-top: 10px;
+}
+
+/* Winner Overlay */
+#winner-overlay {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.8);
+	z-index: 1000;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	animation: fadeIn 0.5s;
+}
+
+.bingo-text {
+	font-family: var(--font-heading);
+	font-size: 8em;
+	color: var(--gold);
+	text-shadow: 0 0 20px rgba(240, 196, 32, 0.5);
+	animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+	transform: rotate(-10deg);
+}
+
+.snow {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	pointer-events: none;
+	z-index: 999;
+}
+
+.snowflake {
+	position: absolute;
+	width: 10px;
+	height: 10px;
+	background: white;
+	border-radius: 50%;
+	opacity: 0.8;
+	animation: snow 5s linear infinite;
+}
+
+@keyframes snow {
+	to {
+		transform: translateY(100vh);
+	}
+}
+
+@keyframes popIn {
+	from {
+		transform: scale(0) rotate(-45deg);
+		opacity: 0;
+	}
+
+	to {
+		transform: scale(1) rotate(-10deg);
+		opacity: 1;
+	}
+}
+
+@media (max-width: 600px) {
+	.bingo-text {
+		font-size: 4em;
+	}
+}

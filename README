@@ -1,0 +1,35 @@
+# Kalle Anka-Bingo
+
+En modern webbapplikation för att spela bingo under Kalle Anka på julafton. Byggd med PHP och SQLite.  
+Ett hobbyprojekt. Ett kulturarv. Ett tveksamt arkitekturbeslut.
+
+## Funktioner
+
+- **Spela**: Skapa personliga bingobrickor genom att välja 25 rutor själv eller slumpa fram dem.
+- **Design**: Festligt och responsivt gränssnitt som fungerar lika bra på mobilen som på datorn.
+- **Upplevelse**: Ljudeffekter vid klick och vinst, samt snöfall när du får BINGO!
+- **Admin**: Hantera bingorutor och användare via ett enkelt webbgränssnitt.
+
+## Installation
+
+1. **Krav**: PHP med tillägget `pdo_sqlite`.
+2. **Filer**: Ladda upp projektet till valfri webbserver (Apache/Nginx).
+3. **Rättigheter**: Webbservern behöver skrivrättigheter till databasfilen `kallebingo.db`.
+
+## Admin-panel
+
+Admin-panelen används för att hantera bingorutor och användare.
+
+- **URL**: `din-sida.se/admin.php`
+- **Standardlösenord**: `hunter2`
+
+## Teknisk info
+
+- **Backend**: PHP
+- **Databas**: SQLite (filbaserad, ingen separat server)
+- **Frontend**: HTML, CSS (Glassmorphism), jQuery
+- **Typsnitt**: Google Fonts (Mountains of Christmas, Open Sans)
+
+## Disclaimer
+
+Detta är ett lekfullt julprojekt. Ingen garanti för stabilitet, säkerhet eller familjefrid efter tredje glöggen.
